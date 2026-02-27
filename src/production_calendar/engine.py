@@ -43,11 +43,11 @@ class ProductionCalendar:
         self.holidays: Set[date] = set(holidays) if holidays else set()
         self.extra_working_days: Set[date] = set(extra_working_days) if extra_working_days else set()
 
-    def get_fiscal_period(self, reference_date: date, start_day: int = 26) -> FiscalPeriod:
+    def get_fiscal_period(self, reference_date: date, start_day: int) -> FiscalPeriod:
         """
         Determina o período fiscal de uma data com base no dia de corte (start_day).
         """
-        if not (1 <= start_day <= 28):
+        if not (1 <= start_day <= 31):
             raise ValueError(f"⚠️ start_day={start_day} é insano. Use entre 1 e 28.")
 
         # Lógica de deslocamento (Shift)
